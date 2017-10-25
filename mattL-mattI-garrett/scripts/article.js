@@ -21,7 +21,7 @@ Article.prototype.toHtml = function() {
   // The benefit of cloning the article is to replace the placeholders inside of the template with each parameter that was made with each of the instance articles.
 
   let $newArticle = $('article.template').clone();
-  /* TODO: This cloned article still has a class of template. In our modules.css stylesheet, we should give all elements with a class of template a display of none so that our template does not display in the browser. But, we also need to make sure we're not accidentally hiding our cloned article. */
+  /* DONE: This cloned article still has a class of template. In our modules.css stylesheet, we should give all elements with a class of template a display of none so that our template does not display in the browser. But, we also need to make sure we're not accidentally hiding our cloned article. */
   $('.template').css('display', 'none');
 
   if (!this.publishedOn) $newArticle.addClass('draft');
@@ -46,12 +46,10 @@ rawData.sort(function(a,b) {
   return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
 });
 
-// TODO: Refactor these for loops using the .forEach() array method.
-
-for(let i = 0; i < rawData.length; i++) {
-  articles.push(new Article(rawData[i]));
-}
-
-for(let i = 0; i < articles.length; i++) {
-  $('#articles').append(articles[i].toHtml());
-}
+// DONE: Refactor these for loops using the .forEach() array method.
+rawData.forEach(function(data){
+  articles.push(new Article(data));
+})
+articles.forEach(function(articleData){
+  $('#articles').append(articleData.toHtml());
+})
