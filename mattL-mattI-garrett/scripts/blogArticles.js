@@ -1,7 +1,7 @@
 'use strict';
 
 // COMMENT: How is this data utilized within our blog app? What is the structure of this data (your response should include the terms "object", "array", and "key/value pairs")?
-// PUT YOUR RESPONSE HERE
+// The articles are stored as objects within the rawData array using the respective key value pairs. The key value pairs are being stored to be used in the toHTML function to replace the template's placeholders.
 
 let rawData = [
   {
